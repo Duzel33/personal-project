@@ -45,7 +45,6 @@ function DailyJoke() {
                 </>
             )}
 
-            {/* <button className="button" onClick={fetchJoke}>Click to See Another Joke</button> */}
         </div>
     )
 }
