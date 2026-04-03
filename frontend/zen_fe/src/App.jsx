@@ -1,10 +1,32 @@
 import { useState } from 'react'
 import zen_wm from './assets/zen_wm3.png'
 import JobForm from './components/JobForm'
+import LoginForm from './components/LoginForm'
+import RegisterForm from './components/RegisterForm'
+import UserRequests from './components/Userrequests'
+import Weather from './components/Weather'
+import DailyJoke from './components/Joke'
 import './App.css'
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [user, setUser] = useState(null)
+  const [view, setView] = useState("login")
+  const [refreshTrigger, setRefreshTrigger] = useState(0)
+
+  const handleAuthSuccess = (userData) => {
+    setUser(userData)
+  }
+
+  const handleLogout = () => {
+    localStorage.removeItem("access")
+    localStorage.removeItem("refresh")
+    setUser(null)
+    setView("login")
+  }
+
+  const handleNewRequest = () => {
+    setRefreshTrigger(prev => prev + 1)
+  }
   
   return (
     <>
@@ -13,32 +35,27 @@ function App() {
           <img src={zen_wm} className="zen" alt="ZEN logo" />
         </div>
 
+        {!user ? (
+          <div>
+            {view === "login" ? (
+              <LoginForm onSwitchToRegister = {() => setView("register")}
+               onAuthSuccess = {handleAuthSuccess} />
+            ) : (
+              <RegisterForm onSwitchToLogin = {() => setView("login")}
+               onAuthSuccess = {handleAuthSuccess} />
+            )}
+            <DailyJoke />
+          </div>
+        ) : (
         <div>
-          <h3>Please Choose what service you would like to schedule</h3>
+          <Weather />
+          <h3>Welcome, {user.first_name}! Thank you for trusting us with your home care needs. Please Choose what service you would like to schedule.</h3>
+          <JobForm onLogout = {handleLogout} onNewRequest={handleNewRequest} />
+          <UserRequests refreshTrigger={refreshTrigger} />
+          <DailyJoke />
         </div>
-
-        <div>
-          <JobForm />
-        </div>
-  
+        )}
       </section>
-
-
-      {/* <div className="ticks"></div>
-
-      <section id="next-steps">
-        <div id="docs">
-          <h2>Documentation</h2>
-          <p>Your questions, answered</p>
-        </div>
-        <div id="social">
-          <h2>Connect with us</h2>
-          <p>Join the Vite community</p>
-        </div>
-      </section>
-
-      <div className="ticks"></div>
-      <section id="spacer"></section> */}
     </>
   )
 }
