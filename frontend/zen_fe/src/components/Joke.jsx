@@ -24,7 +24,7 @@ function DailyJoke() {
         fetchJoke()
     }, [])
 
-    if(error) {
+    if (error) {
         return <p className="status-message error">{error}</p>
     }
 
@@ -36,7 +36,7 @@ function DailyJoke() {
         <div className="joke-container">
             <h3 className="joke-title">JOKE OF THE DAY</h3>
 
-            {joke.type ==="single" ? (
+            {joke.type === "single" ? (
                 <p className="joke-text">{joke.joke}</p>
             ) : (
                 <>

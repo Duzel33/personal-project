@@ -1,5 +1,4 @@
 import { useState } from 'react'
-import zen_wm from './assets/zen_wm3.png'
 import JobForm from './components/JobForm'
 import LoginForm from './components/LoginForm'
 import RegisterForm from './components/RegisterForm'
@@ -12,6 +11,7 @@ function App() {
   const [user, setUser] = useState(null)
   const [view, setView] = useState("login")
   const [refreshTrigger, setRefreshTrigger] = useState(0)
+  const [showForm, setShowForm] = useState(false)
 
   const handleAuthSuccess = (userData) => {
     setUser(userData)
@@ -26,34 +26,45 @@ function App() {
 
   const handleNewRequest = () => {
     setRefreshTrigger(prev => prev + 1)
+    setShowForm(false)
   }
-  
+
+  const handleCancelForm = () => {
+    setShowForm(false)
+  }
+
   return (
     <>
+
       <section id="center">
-        <div className="hero">
-          <img src={zen_wm} className="zen" alt="ZEN logo" />
-        </div>
 
         {!user ? (
           <div>
             {view === "login" ? (
-              <LoginForm onSwitchToRegister = {() => setView("register")}
-               onAuthSuccess = {handleAuthSuccess} />
+              <LoginForm onSwitchToRegister={() => setView("register")}
+                onAuthSuccess={handleAuthSuccess} />
             ) : (
-              <RegisterForm onSwitchToLogin = {() => setView("login")}
-               onAuthSuccess = {handleAuthSuccess} />
+              <RegisterForm onSwitchToLogin={() => setView("login")}
+                onAuthSuccess={handleAuthSuccess} />
             )}
             <DailyJoke />
           </div>
         ) : (
-        <div>
-          <Weather />
-          <h3>Welcome, {user.first_name}! Thank you for trusting us with your home care needs. Please Choose what service you would like to schedule.</h3>
-          <JobForm onLogout = {handleLogout} onNewRequest={handleNewRequest} />
-          <UserRequests refreshTrigger={refreshTrigger} />
-          <DailyJoke />
-        </div>
+          <div>
+            <Weather />
+            <h3>Welcome, {user.first_name}! Thank you for trusting us with your home care needs.</h3>
+            {showForm ? (
+              <JobForm onLogout={handleLogout} onNewRequest={handleNewRequest} onCancel={handleCancelForm} />
+            ) : (
+              <div>
+                <button className="button" onClick={() => setShowForm(true)}>Request a Service</button>
+                <button className="button" type="button" onClick={handleLogout}>Logout</button>
+              </div>
+            )}
+
+            <UserRequests refreshTrigger={refreshTrigger} />
+            <DailyJoke />
+          </div>
         )}
       </section>
     </>

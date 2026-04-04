@@ -6,7 +6,7 @@ function LoginForm({ onSwitchToRegister, onAuthSuccess }) {
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
     const [statusMessage, setStatusMessage] = useState("")
-    const [ isLoading, setIsLoading] = useState(false)
+    const [isLoading, setIsLoading] = useState(false)
 
     const handleSubmit = async (e) => {
         e.preventDefault()
@@ -36,35 +36,32 @@ function LoginForm({ onSwitchToRegister, onAuthSuccess }) {
         }
     }
 
-return (
-    <div>
-        <h2>Login to your account</h2>
-        <form onSubmit={handleSubmit}>
-            <div>
-                <label htmlFor="email">Email: </label>
-                <input id="email" type="email" value={email} onChange={(e) => setEmail(e.target.value)} required />
-            </div>
-            <div>
-                <label htmlFor="password">Password: </label>
-                <input id="password" type="password" value={password} onChange={(e) => setPassword(e.target.value)} required />
-            </div>
+    return (
+        <div>
+            <h2>Login to your account</h2>
+            <form onSubmit={handleSubmit}>
+                <div>
+                    <label htmlFor="email">Email: </label>
+                    <input id="email" type="email" value={email} onChange={(e) => setEmail(e.target.value)} required />
+                </div>
+                <div>
+                    <label htmlFor="password">Password: </label>
+                    <input id="password" type="password" value={password} onChange={(e) => setPassword(e.target.value)} required />
+                </div>
 
-            <button className="button" type="submit" disabled={isLoading}>
-                {isLoading ? "Loggoing in......." : "Login"}
-            </button>
+                <button className="button" type="submit" disabled={isLoading}>
+                    {isLoading ? "Loggoing in......." : "Login"}
+                </button>
+                <button className="button" type="button" onClick={onSwitchToRegister}>
+                    Create an Account
+                </button>
 
-            {statusMessage && (
-                <p className="status-message error">{statusMessage}</p>
-            )}
-        </form>
-
-        <p>Don't have an account?{""}
-            <button className="button" type="button" onClick={onSwitchToRegister}>
-                Create an Account
-            </button>
-        </p>
-    </div>
-)
+                {statusMessage && (
+                    <p className="status-message error">{statusMessage}</p>
+                )}
+            </form>
+        </div>
+    )
 }
 
 export default LoginForm

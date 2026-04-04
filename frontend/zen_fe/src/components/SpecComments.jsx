@@ -13,7 +13,7 @@ function JobSpecifics({ comment, onCommentChange }) {
                     boxSizing: "border-box",
                     lineHeight: "1.4",
                 }}
-                />
+            />
         </div>
 
     )

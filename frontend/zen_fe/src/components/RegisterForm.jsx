@@ -1,6 +1,6 @@
 import { useState } from "react"
 
-const API_URL=import.meta.env.VITE_API_URL || "http:??localhost:8000"
+const API_URL = import.meta.env.VITE_API_URL || "http:??localhost:8000"
 
 function RegisterForm({ onSwitchToLogin, onAuthSuccess }) {
     const [formData, setFormData] = useState({
@@ -50,45 +50,45 @@ function RegisterForm({ onSwitchToLogin, onAuthSuccess }) {
         <div>
             <h2>Create your Account</h2>
             <form onSubmit={handleSubmit}>
-        <div>
-            <label htmlFor="first_name">First Name: </label>
-            <input id="first_name" name="first_name" type="text" value={formData.first_name} onChange={handleChange} required />
-        </div>
-        <div>
-            <label htmlFor="last_name">Last Name: </label>
-            <input id="last_name" name="last_name" type="text" value={formData.last_name} onChange={handleChange} required />
-        </div>
-        <div>
-            <label htmlFor="email">Email: </label>
-            <input id="email" name="email" type="email" value={formData.email} onChange={handleChange} required />
-        </div>
-        <div>
-            <label htmlFor="password">Password: </label>
-            <input id="password" name="password" type="password" value={formData.password} onChange={handleChange} required />
-        </div>
-        <div>
-            <label htmlFor="phone">Phone: </label>
-            <input id="phone" name="phone" type="tel" value={formData.phone} onChange={handleChange} required />
-        </div>
-        <div>
-            <label htmlFor="address">Address: </label>
-            <input id="address" name="address" type="text" value={formData.address} onChange={handleChange} required />
-        </div>
+                <div>
+                    <label htmlFor="first_name">First Name: </label>
+                    <input id="first_name" name="first_name" type="text" value={formData.first_name} onChange={handleChange} required />
+                </div>
+                <div>
+                    <label htmlFor="last_name">Last Name: </label>
+                    <input id="last_name" name="last_name" type="text" value={formData.last_name} onChange={handleChange} required />
+                </div>
+                <div>
+                    <label htmlFor="email">Email: </label>
+                    <input id="email" name="email" type="email" value={formData.email} onChange={handleChange} required />
+                </div>
+                <div>
+                    <label htmlFor="password">Password: </label>
+                    <input id="password" name="password" type="password" value={formData.password} onChange={handleChange} required />
+                </div>
+                <div>
+                    <label htmlFor="phone">Phone: </label>
+                    <input id="phone" name="phone" type="tel" value={formData.phone} onChange={handleChange} required />
+                </div>
+                <div>
+                    <label htmlFor="address">Address: </label>
+                    <input id="address" name="address" type="text" value={formData.address} onChange={handleChange} required />
+                </div>
 
-        <button className="button" type="submit" disabled={isLoading}>
-            {isLoading ? "Creating Accouint..." : "Create Account"}
-        </button>
+                <button className="button" type="submit" disabled={isLoading}>
+                    {isLoading ? "Creating Accouint..." : "Create Account"}
+                </button>
 
-        {statusMessage && (
-            <p className="status-message error">{statusMessage}</p>
-        )}
+                {statusMessage && (
+                    <p className="status-message error">{statusMessage}</p>
+                )}
 
-        <p> Already have an account?{""}
-        <button className="button" type="button" onClick={onSwitchToLogin}>
-            Login
-        </button>
-        </p>
-        </form>
+                <p> Already have an account?{""}
+                    <button className="button" type="button" onClick={onSwitchToLogin}>
+                        Login
+                    </button>
+                </p>
+            </form>
         </div>
     )
 }

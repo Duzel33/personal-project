@@ -40,14 +40,14 @@ function Weather() {
     return (
         <div className="weather-container">
             <img src={`https://openweathermap.org/img/wn/${weather.icon}@2x.png`}
-            alt={weather.description}
-            className="weather-icon" />
+                alt={weather.description}
+                className="weather-icon" />
 
-        <div className="weather-info">
-            <p className="weather-location">{weather.city}, {weather.region}</p>
-            <p className="weather_temp">{weather.description}</p>
-            <p className="weather-feels">Feels like {weather.feels_like}°F</p>
-        </div>
+            <div className="weather-info">
+                <p className="weather-location">{weather.city}, {weather.region}</p>
+                <p className="weather_temp">{weather.description}</p>
+                <p className="weather-feels">Feels like {weather.feels_like}°F</p>
+            </div>
         </div>
     )
 }

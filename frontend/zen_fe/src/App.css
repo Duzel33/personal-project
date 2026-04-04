@@ -1,3 +1,4 @@
+/* -----Buttons----- */
 .button {
   font-size: 16px;
   padding: 10px 20px;
@@ -15,7 +16,7 @@
     border-color: var(--accent-border);
   }
 
-  
+
   &:disabled {
     opacity: 0.5;
     cursor: not-allowed;
@@ -27,10 +28,38 @@
   }
 }
 
-.hero {
-  position: relative;
+.task-delete {
+  font-size: 13px;
+  padding: 4px 12px;
+  border-radius: 12px;
+  color: #dc2626;
+  background: rgba(239, 68, 68, 0.1);
+  border: 1px solid rgba(239, 68, 68, 0.4);
+  cursor: pointer;
+  transition: border-color 0.3s;
 }
 
+.task-delete:hover {
+  border-color: #dc2626;
+}
+
+.task-edit {
+  font-size: 13px;
+  padding: 4px 12px;
+  border-radius: 12px;
+  color: #05f782;
+  background: rgba(9, 113, 30, 0.1);
+  border: 1px solid rgba(64, 211, 10, 0.4);
+  cursor: pointer;
+  transition: border-color 0.3s;
+}
+
+.task-edit:hover {
+  border-color: #35f605;
+}
+
+
+/* ----LAYOUT---- */
 #center {
   display: flex;
   flex-direction: column;
@@ -46,6 +75,7 @@
 }
 
 
+/* -----STATUS MESSAGE----- */
 .status-message {
   margin-top: 12px;
   padding: 10px 16px;
@@ -66,45 +96,47 @@
 }
 
 
+
+/* -----SERVICE REQUESTS----- */
 .requests-container {
-    width: 100%;
-    text-align: left;
-    margin-top: 32px;
+  width: 100%;
+  text-align: left;
+  margin-top: 32px;
 }
 
 .request-service-title {
-    font-size: 18px;
-    font-weight: 600;
-    color: var(--text-h);
-    margin-bottom: 8px;
-    border-bottom: 1px solid var(--border);
-    padding-bottom: 4px;
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--text-h);
+  margin-bottom: 8px;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 4px;
 }
 
 .request-task-row {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 6px 0 6px 20px;
-    border-bottom: 1px solid var(--border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 6px 0 6px 20px;
+  border-bottom: 1px solid var(--border);
 }
 
-.task-delete {
-    font-size: 13px;
-    padding: 4px 12px;
-    border-radius: 12px;
-    color: #dc2626;
-    background: rgba(239, 68, 68, 0.1);
-    border: 1px solid rgba(239, 68, 68, 0.4);
-    cursor: pointer;
-    transition: border-color 0.3s;
+.request-task-buttons {
+  display: flex;
+  gap: 8px;
+  align-items: center;
 }
 
-.task-delete:hover {
-    border-color: #dc2626;
+.edit-form {
+  padding: 12px 20px;
+  border: 1px solid var(--accent-border);
+  border-radius: 8px;
+  margin: 8px 0;
+  background: var(--accent-bg);
 }
 
 
+/* -----WEATHER----- */
 .weather-container {
   display: flex;
   align-items: center;
@@ -117,35 +149,35 @@
   width: 100%;
   box-sizing: border-box;
 }
- 
+
 .weather-icon {
   width: 60px;
   height: 60px;
 }
- 
+
 .weather-info {
   text-align: left;
 }
- 
+
 .weather-location {
   font-size: 14px;
   color: var(--text);
   margin: 0;
 }
- 
+
 .weather-temp {
   font-size: 28px;
   font-weight: 600;
   color: var(--text-h);
   margin: 0;
 }
- 
+
 .weather-description {
   font-size: 14px;
   color: var(--text);
   margin: 0;
 }
- 
+
 .weather-feels {
   font-size: 13px;
   color: var(--text);
@@ -153,6 +185,7 @@
 }
 
 
+/* -----JOKE OF DAY----- */
 .joke-container {
   width: 100%;
   padding: 20px;
@@ -161,19 +194,19 @@
   text-align: center;
   box-sizing: border-box;
 }
- 
+
 .joke-title {
   font-size: 18px;
   color: var(--text-h);
   margin-bottom: 12px;
 }
- 
+
 .joke-text {
   font-size: 16px;
   color: var(--text);
   margin-bottom: 8px;
 }
- 
+
 .joke-punchline {
   font-size: 16px;
   font-weight: 600;
