@@ -8,6 +8,16 @@ services:
     env_file:
       - ./backend/.env
 
+  nginx:
+    build: 
+      context: .
+      dockerfile: ./webserver/Dockerfile
+    restart: always
+    ports:
+      - "80:80"
+    depends_on:
+      - api
+
   db:
     image: postgres:15
     environment:
@@ -16,15 +26,6 @@ services:
       - POSTGRES_DB=sales_db
     volumes:
       - postgres_data:/var/lib/postgresql/data
-
-  webserver:
-    build:
-      context: .
-      dockerfile: ./webserver/Dockerfile
-    ports:
-      - "80:80"
-    depends_on:
-      - api
 
 volumes:
   postgres_data:

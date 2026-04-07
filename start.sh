@@ -13,7 +13,7 @@ docker exec backend-api-1 python3 setup_data.py
 
 cd ..
 
-cd frontend/zen_fe
+cd frontend
 npm install --silent
 npm run dev &
 cd ../..
