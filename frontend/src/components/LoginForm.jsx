@@ -50,7 +50,7 @@ function LoginForm({ onSwitchToRegister, onAuthSuccess }) {
                 </div>
 
                 <button className="button" type="submit" disabled={isLoading}>
-                    {isLoading ? "Loggoing in......." : "Login"}
+                    {isLoading ? "Logging in......." : "Login"}
                 </button>
                 <button className="button" type="button" onClick={onSwitchToRegister}>
                     Create an Account
