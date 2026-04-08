@@ -2,7 +2,7 @@ import { useState } from "react"
 import JobSpecifics from "./SpecComments"
 import TaskSelection from "./TaskSelect"
 
-const API_URL = import.meta.env.VITE_API_URL || '/api/'
+const API_URL = '/api/'
 
 function JobForm({ onLogout, onNewRequest, onCancel }) {
   const [selectedTask, setSelectedTask] = useState("")
