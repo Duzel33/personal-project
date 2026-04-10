@@ -1,6 +1,6 @@
 import { useState } from "react"
 
-const API_URL = '/api/'
+const API_URL = import.meta.env.VITE_API_URL || "http://localhost:8000"
 
 function RegisterForm({ onSwitchToLogin, onAuthSuccess }) {
     const [formData, setFormData] = useState({
