@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.urls import path
-from .views import AllServices, SpecificService, AllTasksCat, SpecificTaskCat, RegisterView, LoginView, WeatherView
+from .views import AllServices, SpecificService, AllTasksCat, SpecificTaskCat, RegisterView, LoginView, WeatherView, MeView
 
 urlpatterns = [
     path('services/', AllServices.as_view()),
@@ -10,6 +10,7 @@ urlpatterns = [
 
     path('auth/register/', RegisterView.as_view()),
     path('auth/login/', LoginView.as_view()),
+    path('auth/me/', MeView.as_view()),
 
     path('weather/', WeatherView.as_view())
 ]

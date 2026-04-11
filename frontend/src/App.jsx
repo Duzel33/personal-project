@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import JobForm from './components/JobForm'
 import LoginForm from './components/LoginForm'
 import RegisterForm from './components/RegisterForm'
@@ -7,11 +7,42 @@ import Weather from './components/Weather'
 import DailyJoke from './components/Joke'
 import './App.css'
 
+const API_URL = "http://localhost:8000"
+
 function App() {
   const [user, setUser] = useState(null)
   const [view, setView] = useState("login")
   const [refreshTrigger, setRefreshTrigger] = useState(0)
   const [showForm, setShowForm] = useState(false)
+  const [loading, setLoading] = useState(true)
+
+
+  useEffect(() => {
+    const restoreSession = async () => {
+      const token = localStorage.getItem("access")
+      if (token) {
+        try {
+          const response = await fetch(`${API_URL}/auth/me/`, {
+            headers: { "Authorization": `Bearer ${token}` }
+          })
+          if (response.ok) {
+            const data = await response.json()
+            setUser(data)
+          } else {
+            localStorage.removeItem("access")
+            localStorage.removeItem("refresh")
+          }
+        } catch (err) {
+          localStorage.removeItem("access")
+          localStorage.removeItem("refresh")
+        }
+      }
+      setLoading(false)
+    }
+    restoreSession()
+  }, [])
+
+  if(loading) return <p>Loading....</p>
 
   const handleAuthSuccess = (userData) => {
     setUser(userData)
